@@ -1,0 +1,18 @@
+.UsersList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Show-users {
+    margin:1rem;
+    transition: 300ms ease-in;
+    overflow: hidden;
+}
+
+.Show-users:hover {
+    opacity: 0.84;
+    cursor: pointer;
+
+}
