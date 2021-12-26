@@ -3,10 +3,11 @@ import User from '../User/User';
 import {Link} from "react-router-dom";
 import Header from "../Header/Header";
 import './UsersList.css'
+// import {Api} from "../API/API";
 import Api from "../API/API";
-
 class UsersList extends React.Component {
-  // state = { userList:Api.getListUsers()}
+
+  state = { userList:Api.getListUsers()}
 
 
 
@@ -22,7 +23,6 @@ class UsersList extends React.Component {
                         <User user={user} />
                         </div>
                     )
-
                 })}
                 </div>
            </div>)

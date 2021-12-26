@@ -5,5 +5,5 @@ import UserEditPage from "./UserEditPage";
 export default function UserEditPageWrapper() {
     const { id } = useParams();
 
-    return (<UserEditPage id={id}></UserEditPage>)
+    return (<UserEditPage id={id}> </UserEditPage>)
 }

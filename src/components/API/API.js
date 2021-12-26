@@ -1,37 +1,47 @@
 import axios from "axios";
 
-// const axoisApi = axios.create({ baseURL: 'https://61c2f2dc9cfb8f0017a3e7c8.mockapi.io/', });
-const API='https://61c2f2dc9cfb8f0017a3e7c8.mockapi.io/users'
+export const axoisApi = axios.create({ baseURL: 'https://61c2f2dc9cfb8f0017a3e7c8.mockapi.io/users/', });
+const API='https://61c2f2dc9cfb8f0017a3e7c8.mockapi.io/users/'
 //
-// const DATA= async( )=>{
-//     const data = await axios.get(API )
-//
-//     return  data
-//     // this.setState({usersList:data.data},()=>console.log('d',data))
-// }
+export const DATA= async()=>{
+    const data = await axios.get(API )
+    return data.data
 
- const getUserListFromApi= async ()=>{
-    const data = await axios.get(API ) ;
-    //   const data=[{id:1,name:'sssoss',image:'some_url',cat:'fdfdfdf'},{id:2,name:'ssffsoss',image:'some_url2',cat:'cat_url2'}]
-    //  const data = DATA
-    // console.log(data)
+
     // this.setState({usersList:data.data},()=>console.log('d',data))
-     return data.data
 }
+export const deleteUser= async (id)=> {
+        const response= await axoisApi.delete(`${id}`)
+    return response.data
+}
+//  const getUserListFromApi= async ()=>{
+//     const data = await axios.get(API ) ;
+//     //   const data=[{id:1,name:'sssoss',image:'some_url',cat:'fdfdfdf'},{id:2,name:'ssffsoss',image:'some_url2',cat:'cat_url2'}]
+//     //  const data = DATA
+//     // console.log(data)
+//     // this.setState({usersList:data.data},()=>console.log('d',data))
+//      return data.data
+// }
+//
+// const DATA =async()=>  await getUserListFromApi()
 
-const DATA =async()=>  await getUserListFromApi()
+
+
+
 
 export default class Api {
     static async getIds() {
         return DATA.map(item => item.id);
     }
 
-    static getUser(id) {
+    static  async getUser(id) {
         return DATA.find(item => item.id === id);
+        // return await axoisApi.get(`${id}`)
+
     }
 
     static async getListUsers() {
-        console.log(DATA)
+
         return DATA;
     }
 
@@ -39,21 +49,28 @@ export default class Api {
         DATA.push(user);
     }
 
-    static updateUser(user) {
-        const index = DATA.findIndex(x => x.id === user.id);
-        if (index === -1) {
-            throw new Error("Item not found with id=" + user.id)
-        }
-        DATA[index] = user;
+    static async updateUser(id) {
+        // const index = DATA.findIndex(x => x.id === user.id);
+        // if (index === -1) {
+        //     throw new Error("Item not found with id=" + user.id)
+        // }
+        // console.log('dddd', user)
+        // DATA[index] = user;
+        // console.log('sss',DATA[index])
+        return await axios.put(API+`/${id}`)
     }
 
-    static deleteItem(id) {
-        const index = DATA.findIndex(x => x.id === id);
-        if (index === -1) {
-            throw new Error("Item not found with id=" + id)
-        }
-        DATA.splice(index, 1);
+    static async deleteItem(id) {
+        // const DATA= await axios.get(API)
+        // const index = DATA.findIndex(x => x.id === id);
+        // if (index === -1) {
+        //     throw new Error("Item not found with id=" + id)
+        // }
+        // DATA.splice(index, 1);
+        return await axios.delete(API+`/${id}`)
     }
+
+
 }
 
 //
@@ -556,4 +573,25 @@ export default class Api {
 //         "id": "71"
 //     }
 // ]
-//  export default DATA
+//  // export default DATA
+//
+// import React, { Component } from 'react';
+// import { useParams } from 'react-router-dom';
+//
+// const Param = () => {
+//     const params = useParams();
+//     return <CategoryDetails prop={params} />;
+// };
+//
+// class CategoryDetails extends Component {
+//     render() {
+//         console.log(this.props);
+//         return (
+//             <div>
+//                 <h1>CategoryDetails</h1>
+//             </div>
+//         );
+//     }
+// }
+//
+// export default Param;

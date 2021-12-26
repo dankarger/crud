@@ -39,7 +39,7 @@ class MiniCrudApp extends React.Component {
        const data = await axios.get(API+'users');
        //   const data=[{id:1,name:'sssoss',image:'some_url',cat:'fdfdfdf'},{id:2,name:'ssffsoss',image:'some_url2',cat:'cat_url2'}]
        //  const data = DATA
-       //  console.log(data)
+        console.log(data)
        this.setState({usersList:data.data},()=>console.log('d',data))
     }
 
@@ -60,13 +60,13 @@ class MiniCrudApp extends React.Component {
                     <Routes>
                             <Route path='/'  element={<Header /> }/>
                             <Route path='/'  exact element={<HomePage />} />
-                            <Route path='/users'  element={ <UsersList userList={this.state.userList}/>}/>
-                            {/*<Route path='/user/edit/:id'  element={<UserEditPageWrapper /> }/>*/}
-                            {/*  <Route path='/user/:id'  element={<UserShowPageWrapper /> }/>*/}
+                            <Route path='/users'  element={ <UsersList usersList={this.state.usersList}/>}/>
+                            <Route path='/user/edit/:id'  element={<UserEditPageWrapper /> }/>
+                            <Route path='/user/:id'  element={<UserShowPageWrapper /> }/>
 
                     </Routes>
                 </BrowserRouter>
-gfdfg
+
             </div>
         )
     }

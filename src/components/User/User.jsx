@@ -4,10 +4,11 @@ import Header from "../Header/Header";
 import {Link} from "react-router-dom";
 
 export default function User(props) {
-    const {user} = props
-
+    // const {user} = props
+    const user = props.user
     return (
         <>
+            fsdfsdf
                 <div className='ui card User' id={user.id} key={user.id}>
                     <Link to={`/user/${user.id}`}>
                     <div>
